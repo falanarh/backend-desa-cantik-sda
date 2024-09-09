@@ -8,7 +8,9 @@ const router = Router();
 // Middleware for authentication (you may need to adjust this based on your auth strategy)
 router.use(authenticate);
 
-const upload = multer({ dest: 'uploads/' });
+// Configure multer to store files in memory
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 router.post('/', upload.single('file'), uploadFile);
 

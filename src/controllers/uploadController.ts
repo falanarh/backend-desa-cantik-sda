@@ -10,25 +10,26 @@ export const uploadFile = async (req: Request, res: Response) => {
     const file = req.file;
     let result;
 
+    console.log(file);
+
     if (file.mimetype.startsWith('image/')) {
-      result = await uploadImage(file.path);
+      result = await uploadImage(file);
       res.status(200).json({ message: 'File uploaded successfully', url: result.secure_url });
     } else if (
       file.mimetype === 'application/pdf' || 
       file.mimetype === 'application/msword' || 
       file.mimetype === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
     ) {
-      result = await uploadDocument(file.path);
+      result = await uploadDocument(file);
       res.status(200).json({ message: 'File uploaded successfully', url: result });
     } else {
       return res.status(400).json({ message: 'Invalid file type' });
     }
-
-    // res.status(200).json({ message: 'File uploaded successfully', url: result });
   } catch (error: any) {
     res.status(500).json({ message: 'File upload failed', error });
   }
 };
+
 
 
 // import { Request, Response } from 'express';
