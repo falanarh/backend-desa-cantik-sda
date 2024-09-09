@@ -17,6 +17,13 @@ import uploadRoutes from './routes/uploadRoutes';
 
 dotenv.config();
 const app = express();
+const cors = require("cors");
+
+app.use(cors({
+    origin: ['https://desa-cantik-sda.vercel.app', 'http://localhost:5173'], // Ganti dengan domain Anda
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Metode yang diizinkan
+    // allowedHeaders: ['Content-Type', 'Authorization']
+  }));
 app.use(express.json());
 
 // Setup morgan to log requests
