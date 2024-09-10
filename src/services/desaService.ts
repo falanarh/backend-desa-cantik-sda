@@ -38,5 +38,6 @@ export const updateDesa = async (id: string, data: {
 
 // Delete a Desa by ID
 export const deleteDesa = async (id: string) => {
-    return await Desa.findByIdAndDelete(id);
+    const objectId = new mongoose.Types.ObjectId(id);
+    return await Desa.findByIdAndDelete(objectId);
 };

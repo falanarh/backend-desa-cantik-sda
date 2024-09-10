@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import Statistik from '../models/Statistik';
 
 // Create a new Statistik
@@ -26,10 +27,10 @@ export const updateStatistik = async (id: string, data: {
     desa?: string;
     rt?: number;
 }) => {
-    return await Statistik.findByIdAndUpdate(id, data, { new: true });
+    return await Statistik.findByIdAndUpdate(new mongoose.Types.ObjectId(id), data, { new: true });
 };
 
 // Delete a Statistik by ID
 export const deleteStatistik = async (id: string) => {
-    return await Statistik.findByIdAndDelete(id);
+    return await Statistik.findByIdAndDelete(new mongoose.Types.ObjectId(id));
 };

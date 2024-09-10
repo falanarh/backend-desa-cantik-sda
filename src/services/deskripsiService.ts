@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import Deskripsi from '../models/Deskripsi';
 
 // Create a new Deskripsi
@@ -28,10 +29,12 @@ export const updateDeskripsi = async (id: string, data: {
     isi?: string;
     link_video?: string;
 }) => {
-    return await Deskripsi.findByIdAndUpdate(id, data, { new: true });
+    const objectId = new mongoose.Types.ObjectId(id);
+    return await Deskripsi.findByIdAndUpdate(objectId, data, { new: true });
 };
 
 // Delete a Deskripsi by ID
 export const deleteDeskripsi = async (id: string) => {
-    return await Deskripsi.findByIdAndDelete(id);
+    const objectId = new mongoose.Types.ObjectId(id);
+    return await Deskripsi.findByIdAndDelete(objectId);
 };

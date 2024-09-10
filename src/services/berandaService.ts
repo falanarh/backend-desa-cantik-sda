@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import Beranda from '../models/Beranda';
 
 export const createBeranda = async (data: {
@@ -24,9 +25,11 @@ export const updateBeranda = async (id: string, data: {
     teks_3?: string;
     link_gambar?: string;
 }) => {
-    return await Beranda.findByIdAndUpdate(id, data, { new: true });
+    const objectId = new mongoose.Types.ObjectId(id);
+    return await Beranda.findByIdAndUpdate(objectId, data, { new: true });
 };
 
 export const deleteBeranda = async (id: string) => {
-    return await Beranda.findByIdAndDelete(id);
+    const objectId = new mongoose.Types.ObjectId(id);
+    return await Beranda.findByIdAndDelete(objectId);
 };

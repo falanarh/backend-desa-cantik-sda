@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import TimDesaCantik from '../models/TimDesaCantik';
 
 // Create a new TimDesaCantik
@@ -26,10 +27,10 @@ export const updateTimDesaCantik = async (id: string, data: {
     jabatan?: string;
     link_gambar?: string;
 }) => {
-    return await TimDesaCantik.findByIdAndUpdate(id, data, { new: true });
+    return await TimDesaCantik.findByIdAndUpdate(new mongoose.Types.ObjectId(id), data, { new: true });
 };
 
 // Delete a TimDesaCantik by ID
 export const deleteTimDesaCantik = async (id: string) => {
-    return await TimDesaCantik.findByIdAndDelete(id);
+    return await TimDesaCantik.findByIdAndDelete(new mongoose.Types.ObjectId(id));
 };

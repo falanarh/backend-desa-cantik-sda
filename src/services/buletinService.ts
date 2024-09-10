@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import Buletin from '../models/Buletin';
 
 // Create a new Buletin
@@ -30,10 +31,12 @@ export const updateBuletin = async (id: string, data: {
     deskripsi?: string;
     link_file?: string;
 }) => {
-    return await Buletin.findByIdAndUpdate(id, data, { new: true });
+    const objectId = new mongoose.Types.ObjectId(id);
+    return await Buletin.findByIdAndUpdate(objectId, data, { new: true });
 };
 
 // Delete a Buletin by ID
 export const deleteBuletin = async (id: string) => {
-    return await Buletin.findByIdAndDelete(id);
+    const objectId = new mongoose.Types.ObjectId(id);
+    return await Buletin.findByIdAndDelete(objectId);
 };

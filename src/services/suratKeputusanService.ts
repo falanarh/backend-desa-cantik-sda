@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import SuratKeputusan from '../models/SuratKeputusan';
 
 // Create a new SuratKeputusan
@@ -24,10 +25,10 @@ export const updateSuratKeputusan = async (id: string, data: {
     judul?: string;
     link_file?: string;
 }) => {
-    return await SuratKeputusan.findByIdAndUpdate(id, data, { new: true });
+    return await SuratKeputusan.findByIdAndUpdate(new mongoose.Types.ObjectId(id), data, { new: true });
 };
 
 // Delete a SuratKeputusan by ID
 export const deleteSuratKeputusan = async (id: string) => {
-    return await SuratKeputusan.findByIdAndDelete(id);
+    return await SuratKeputusan.findByIdAndDelete(new mongoose.Types.ObjectId(id));
 };
