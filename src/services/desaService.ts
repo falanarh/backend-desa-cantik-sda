@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import Desa from '../models/Desa';
 
 // Create a new Desa
@@ -28,7 +29,11 @@ export const updateDesa = async (id: string, data: {
     luas?: number;
     link_gambar?: string;
 }) => {
-    return await Desa.findByIdAndUpdate(id, data, { new: true });
+    // Konversi id menjadi objek ID Mongoose
+    const objectId = new mongoose.Types.ObjectId(id);
+
+    // Update data berdasarkan id dan kembalikan data yang baru
+    return await Desa.findByIdAndUpdate(objectId, data, { new: true });
 };
 
 // Delete a Desa by ID
