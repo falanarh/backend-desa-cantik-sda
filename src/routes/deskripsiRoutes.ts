@@ -7,6 +7,18 @@ const router = Router();
 // Middleware for authentication (optional)
 router.use(authenticate);
 
+// Update Judul
+router.put('/updateJudul', deskripsiController.updateJudul);
+
+// Update Sub Judul
+router.put('/updateSubJudul', deskripsiController.updateSubJudul);
+
+// Update Isi
+router.put('/updateIsi', deskripsiController.updateIsi);
+
+// Update Link Video
+router.put('/updateLinkVideo', deskripsiController.updateLinkVideo);
+
 // Create a new Deskripsi
 router.post('/', deskripsiController.createDeskripsi);
 
