@@ -58,3 +58,36 @@ export const deleteStatistik = async (req: Request, res: Response) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+// Update Kecamatan
+export const updateKecStat = async (req: Request, res: Response) => {
+    try {
+      const { kecamatan } = req.body;
+      const statistik = await statistikService.updateKecamatan(kecamatan);
+      res.status(200).json(statistik);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+  
+  // Update Desa
+  export const updateDesStat = async (req: Request, res: Response) => {
+    try {
+      const { desa } = req.body;
+      const statistik = await statistikService.updateDesa(desa);
+      res.status(200).json(statistik);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+  
+  // Update RT
+  export const updateRtStat = async (req: Request, res: Response) => {
+    try {
+      const { rt } = req.body;
+      const statistik = await statistikService.updateRt(rt);
+      res.status(200).json(statistik);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  };

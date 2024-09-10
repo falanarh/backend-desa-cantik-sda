@@ -7,6 +7,15 @@ const router = Router();
 // Middleware for authentication (optional)
 router.use(authenticate);
 
+// Update Kecamatan
+router.put('/updateKec', statistikController.updateKecStat);
+
+// Update Desa
+router.put('/updateDes', statistikController.updateDesStat);
+
+// Update RT
+router.put('/updateRt', statistikController.updateRtStat);
+
 // Create a new Statistik
 router.post('/', statistikController.createStatistik);
 
