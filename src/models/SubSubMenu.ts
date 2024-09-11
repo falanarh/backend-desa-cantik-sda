@@ -1,15 +1,15 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 interface SubSubMenu extends Document {
-    judul: string;
+    title: string;
     link: string;
-    subMenu?: mongoose.Schema.Types.ObjectId; // Referensi ke SubMenu
+    subMenu?: mongoose.Schema.Types.ObjectId; // Reference to SubMenu
 }
 
 const subSubMenuSchema: Schema = new Schema({
-    judul: { type: String, required: true },
-    link: { type: String, required: true },
-    subMenu: { type: Schema.Types.ObjectId, ref: 'SubMenu' } // Referensi ke SubMenu
+    title: { type: String, required: true },
+    link: { type: String },
+    subMenu: { type: Schema.Types.ObjectId, ref: 'SubMenu' } // Reference to SubMenu
 });
 
 export default mongoose.model<SubSubMenu>('SubSubMenu', subSubMenuSchema);

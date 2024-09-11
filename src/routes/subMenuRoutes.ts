@@ -1,21 +1,17 @@
 import { Router } from 'express';
-import * as SubMenuController from '../controllers/subMenuController';
+import * as subMenuController from '../controllers/subMenuController';
 import { authenticate } from '../middlewares/authMiddleware';
 
 const router = Router();
 
-// Middleware for authentication (you may need to adjust this based on your auth strategy)
+// Routes for SubMenu
 router.use(authenticate);
-
-// CRUD routes for SubMenu
-router.post('/', SubMenuController.createSubMenu);
-router.get('/:id', SubMenuController.getSubMenu);
-router.get('/', SubMenuController.getAllSubMenus);
-router.put('/:id', SubMenuController.updateSubMenu);
-router.delete('/:id', SubMenuController.deleteSubMenu);
-
-// Routes to add/remove SubSubMenu
-router.post('/:id/subSubMenus', SubMenuController.addSubSubMenuToSubMenu);
-router.delete('/:id/subSubMenus', SubMenuController.removeSubSubMenuFromSubMenu);
+router.post('/', subMenuController.createSubMenu);
+router.get('/:id', subMenuController.getSubMenu);
+router.get('/', subMenuController.getAllSubMenus);
+router.put('/:id', subMenuController.updateSubMenu);
+router.delete('/:id', subMenuController.deleteSubMenu);
+router.post('/:subMenuId/subsubmenus/:subSubMenuId', subMenuController.addSubSubMenuToSubMenu);
+router.delete('/:id/subsubmenus', subMenuController.removeSubSubMenuFromSubMenu);
 
 export default router;

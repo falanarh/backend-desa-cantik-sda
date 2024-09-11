@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import * as SubSubMenuController from '../controllers/subSubMenuController';
+import * as subSubMenuController from '../controllers/subSubMenuController';
 import { authenticate } from '../middlewares/authMiddleware';
 
 const router = Router();
@@ -8,10 +8,11 @@ const router = Router();
 router.use(authenticate);
 
 // CRUD routes for SubSubMenu
-router.post('/', SubSubMenuController.createSubSubMenu);
-router.get('/:id', SubSubMenuController.getSubSubMenu);
-router.get('/', SubSubMenuController.getAllSubSubMenus);
-router.put('/:id', SubSubMenuController.updateSubSubMenu);
-router.delete('/:id', SubSubMenuController.deleteSubSubMenu);
+router.post('/', subSubMenuController.createSubSubMenu);
+router.get('/:id', subSubMenuController.getSubSubMenu);
+router.get('/', subSubMenuController.getAllSubSubMenus);
+router.put('/:id', subSubMenuController.updateSubSubMenu);
+router.delete('/:id', subSubMenuController.deleteSubSubMenu);
+
 
 export default router;
