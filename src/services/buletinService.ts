@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import Buletin from '../models/Buletin';
+import { uploadImageFromUrl } from './uploadService';
+import { convertGoogleDriveLink } from '../utils/convertGoogleDriveLink';
 
 // Create a new Buletin
 export const createBuletin = async (data: {
@@ -9,7 +11,11 @@ export const createBuletin = async (data: {
     deskripsi: string;
     link_file: string;
 }) => {
-    const buletin = new Buletin(data);
+    const uploadResult = await uploadImageFromUrl(convertGoogleDriveLink(data.link_file));
+    const link_thumbnail = uploadResult.secure_url;
+    const buletinData = { ...data, link_thumbnail };
+
+    const buletin = new Buletin(buletinData);
     return await buletin.save();
 };
 

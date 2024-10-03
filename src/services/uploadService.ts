@@ -5,6 +5,27 @@ import fs from "fs";
 import path from "path";
 import getOAuth2Client from "../config/googleDriveConfig";
 import { PassThrough } from "stream";
+import axios from 'axios';
+
+export const uploadImageFromUrl = async (imageUrl: string): Promise<UploadApiResponse> => {
+  try {
+    // Fetch the image from the URL
+    const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+    const imageBuffer = Buffer.from(response.data, 'binary');
+
+    return new Promise((resolve, reject) => {
+      cloudinary.uploader.upload_stream({ resource_type: 'image' }, (error, result) => {
+        if (error) {
+          return reject(error);
+        }
+        resolve(result as UploadApiResponse);
+      }).end(imageBuffer);
+    });
+  } catch (error: any) {
+    console.error('Error uploading image from URL:', error);
+    throw new Error(`Error uploading image from URL: ${error.message}`);
+  }
+};
 
 export const uploadImage = async (file: Express.Multer.File): Promise<UploadApiResponse> => {
   return new Promise((resolve, reject) => {
