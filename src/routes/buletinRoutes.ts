@@ -4,6 +4,9 @@ import { authenticate } from '../middlewares/authMiddleware'; // Optional, if au
 
 const router = Router();
 
+// Get all Buletins
+router.get('/', buletinController.getAllBuletin);
+
 // Middleware for authentication (you may need to adjust this based on your auth strategy)
 router.use(authenticate);
 
@@ -12,9 +15,6 @@ router.post('/', buletinController.createBuletin);
 
 // Get a single Buletin by ID
 router.get('/:id', buletinController.getBuletin);
-
-// Get all Buletins
-router.get('/', buletinController.getAllBuletin);
 
 // Update a Buletin by ID
 router.put('/:id', buletinController.updateBuletin);
