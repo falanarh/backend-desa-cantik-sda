@@ -31,14 +31,17 @@ export const getAllBuletin = async () => {
 
 // Update a Buletin by ID
 export const updateBuletin = async (id: string, data: {
-    judul?: string;
-    tanggal_rilis?: Date;
-    tanggal_kegiatan?: Date;
-    deskripsi?: string;
-    link_file?: string;
+    judul: string;
+    tanggal_rilis: Date;
+    tanggal_kegiatan: Date;
+    deskripsi: string;
+    link_file: string;
 }) => {
     const objectId = new mongoose.Types.ObjectId(id);
-    return await Buletin.findByIdAndUpdate(objectId, data, { new: true });
+    const uploadResult = await uploadImageFromUrl(convertGoogleDriveLink(data.link_file));
+    const link_thumbnail = uploadResult.secure_url;
+    const buletinData = { ...data, link_thumbnail };
+    return await Buletin.findByIdAndUpdate(objectId, buletinData, { new: true });
 };
 
 // Delete a Buletin by ID
