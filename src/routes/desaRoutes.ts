@@ -4,6 +4,9 @@ import { authenticate } from '../middlewares/authMiddleware'; // Optional, if au
 
 const router = Router();
 
+// Get all Desa
+router.get('/', desaController.getAllDesa);
+
 // Middleware for authentication (optional)
 router.use(authenticate);
 
@@ -13,8 +16,6 @@ router.post('/', desaController.createDesa);
 // Get a single Desa by ID
 router.get('/:id', desaController.getDesa);
 
-// Get all Desa
-router.get('/', desaController.getAllDesa);
 
 // Update a Desa by ID
 router.put('/:id', desaController.updateDesa);
