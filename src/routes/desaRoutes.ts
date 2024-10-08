@@ -16,7 +16,6 @@ router.post('/', desaController.createDesa);
 // Get a single Desa by ID
 router.get('/:id', desaController.getDesa);
 
-
 // Update a Desa by ID
 router.put('/:id', desaController.updateDesa);
 

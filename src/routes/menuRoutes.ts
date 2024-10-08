@@ -4,11 +4,12 @@ import { authenticate } from '../middlewares/authMiddleware';
 
 const router = Router();
 
+router.get('/', menuController.getAllMenus);
+
 router.use(authenticate);
 
 router.post('/', menuController.createMenu);
 router.get('/:id', menuController.getMenu);
-router.get('/', menuController.getAllMenus);
 router.put('/:id', menuController.updateMenu);
 router.delete('/:id', menuController.deleteMenu);
 router.post('/:menuId/submenus/:subMenuId', menuController.addSubMenuToMenu);

@@ -4,6 +4,9 @@ import { authenticate } from '../middlewares/authMiddleware'; // Optional, if au
 
 const router = Router();
 
+// Get all Deskripsi
+router.get('/', deskripsiController.getAllDeskripsi);
+
 // Middleware for authentication (optional)
 router.use(authenticate);
 
@@ -24,9 +27,6 @@ router.post('/', deskripsiController.createDeskripsi);
 
 // Get a single Deskripsi by ID
 router.get('/:id', deskripsiController.getDeskripsi);
-
-// Get all Deskripsi
-router.get('/', deskripsiController.getAllDeskripsi);
 
 // Update a Deskripsi by ID
 router.put('/:id', deskripsiController.updateDeskripsi);

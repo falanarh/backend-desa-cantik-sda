@@ -4,6 +4,9 @@ import { authenticate } from '../middlewares/authMiddleware'; // Optional, if au
 
 const router = Router();
 
+// Get all TimDesaCantik
+router.get('/', timDesaCantikController.getAllTimDesaCantik);
+
 // Middleware for authentication (optional)
 router.use(authenticate);
 
@@ -12,9 +15,6 @@ router.post('/', timDesaCantikController.createTimDesaCantik);
 
 // Get a single TimDesaCantik by ID
 router.get('/:id', timDesaCantikController.getTimDesaCantik);
-
-// Get all TimDesaCantik
-router.get('/', timDesaCantikController.getAllTimDesaCantik);
 
 // Update a TimDesaCantik by ID
 router.put('/:id', timDesaCantikController.updateTimDesaCantik);

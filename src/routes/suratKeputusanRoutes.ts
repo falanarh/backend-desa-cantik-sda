@@ -4,6 +4,9 @@ import { authenticate } from '../middlewares/authMiddleware'; // Optional, if au
 
 const router = Router();
 
+// Get all SuratKeputusan
+router.get('/', suratKeputusanController.getAllSuratKeputusan);
+
 // Middleware for authentication (optional)
 router.use(authenticate);
 
@@ -12,9 +15,6 @@ router.post('/', suratKeputusanController.createSuratKeputusan);
 
 // Get a single SuratKeputusan by ID
 router.get('/:id', suratKeputusanController.getSuratKeputusan);
-
-// Get all SuratKeputusan
-router.get('/', suratKeputusanController.getAllSuratKeputusan);
 
 // Update a SuratKeputusan by ID
 router.put('/:id', suratKeputusanController.updateSuratKeputusan);

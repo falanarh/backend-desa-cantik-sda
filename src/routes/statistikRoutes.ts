@@ -4,6 +4,9 @@ import { authenticate } from '../middlewares/authMiddleware'; // Optional, if au
 
 const router = Router();
 
+// Get all Statistik
+router.get('/', statistikController.getAllStatistik);
+
 // Middleware for authentication (optional)
 router.use(authenticate);
 
@@ -21,9 +24,6 @@ router.post('/', statistikController.createStatistik);
 
 // Get a single Statistik by ID
 router.get('/:id', statistikController.getStatistik);
-
-// Get all Statistik
-router.get('/', statistikController.getAllStatistik);
 
 // Update a Statistik by ID
 router.put('/:id', statistikController.updateStatistik);

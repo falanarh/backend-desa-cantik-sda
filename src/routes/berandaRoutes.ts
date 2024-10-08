@@ -4,6 +4,9 @@ import { authenticate } from '../middlewares/authMiddleware';
 
 const router = Router();
 
+// Get all Beranda
+router.get('/', berandaController.getAllBeranda);
+
 // Middleware for authentication (you may need to adjust this based on your auth strategy)
 router.use(authenticate);
 
@@ -25,8 +28,6 @@ router.post('/', berandaController.createBeranda);
 // Get a single Beranda by ID
 router.get('/:id', berandaController.getBeranda);
 
-// Get all Beranda
-router.get('/', berandaController.getAllBeranda);
 
 // Update a Beranda by ID
 router.put('/:id', berandaController.updateBeranda);
