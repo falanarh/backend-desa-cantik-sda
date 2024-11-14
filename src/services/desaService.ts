@@ -7,6 +7,7 @@ export const createDesa = async (data: {
     kecamatan: string;
     luas: number;
     link_gambar: string;
+    link_web: string;
 }) => {
     const desa = new Desa(data);
     return await desa.save();
@@ -28,6 +29,7 @@ export const updateDesa = async (id: string, data: {
     kecamatan?: string;
     luas?: number;
     link_gambar?: string;
+    link_web?: string;
 }) => {
     // Konversi id menjadi objek ID Mongoose
     const objectId = new mongoose.Types.ObjectId(id);
